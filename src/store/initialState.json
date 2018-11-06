@@ -1,0 +1,19 @@
+{
+    "testClasses": ["ATest", "BTest", "CTest"],
+    "sourceClasses": ["ScriptInclude1", "ScriptInclude2", "ScriptInclude3"],
+    "mapping": {
+        "ATest": {
+            "ScriptInclude1": ["test1", "test2", "test3"],
+            "ScriptInclude2": ["test1", "test2"]
+        },
+        "BTest": {
+            "ScriptInclude1": ["test3"],
+            "ScriptInclude2": ["test1", "test2"]
+        },
+        "CTest": {
+            "ScriptInclude1": ["test3"],
+            "ScriptInclude2": ["test1", "test2"],
+            "ScriptInclude3": ["test1", "test2"]
+        }
+    }
+}
