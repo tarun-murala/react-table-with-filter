@@ -1,6 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import initialState from './store/initialState.json';
+import { Provider } from 'react-redux'
+import store from './store';
 
-ReactDOM.render(<App initialState={initialState}/>, document.getElementById('root'));
+const unsubscriber = store.subscribe(() => 
+                        console.log("Action dispatched - New state => " + JSON.stringify(store.getState()))
+                    );
+
+window.React = React;
+window.store = store;
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>, 
+    document.getElementById('root'));

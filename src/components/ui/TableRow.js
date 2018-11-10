@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import TestRow from './TestRow'
 
 class TableRow extends Component {
     static propTypes = {
@@ -11,12 +10,12 @@ class TableRow extends Component {
     }
 
     render() {
-        var testName = this.props.testName;
-        var mapping = this.props.mapping;
-        var key = this.props.key;
-        var entries = Object.entries(mapping)
         return ( 
-            <TestRow  testName={testName} entries={entries} key={key}/>
+            <tr>
+                <td>{this.props.testClass}</td>
+                <td>{this.props.sourceClass}</td>
+                <td>{this.props.testMethod}</td>
+            </tr>
         );
     }
 }
