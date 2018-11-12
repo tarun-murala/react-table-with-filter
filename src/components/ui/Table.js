@@ -30,7 +30,7 @@ class Table extends Component {
                     </thead>
                     <tbody>
                         {this.props.testClasses.map((entry, i) =>
-                            (<TableRow testClass={entry.testClass} sourceClass={entry.source} testMethod={entry.testMethod} key={i}/>)
+                            (<TableRow testClass={entry.testClass} sourceClass={entry.sourceClass} testMethod={entry.testMethod} key={i}/>)
                         )}
                     </tbody>
                 </table>

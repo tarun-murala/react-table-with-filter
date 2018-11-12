@@ -26,9 +26,14 @@ class TableFilterContainer extends Component {
 
     render() {
         console.log("Into TableFilteContainer Render() -> " + JSON.stringify(this.props.testClasses));
+        console.log("Dispatch Actions mapped -> " + this.props.onChangeTestClass + " | " + 
+            this.props.onChangeSourceClass);
         let {testClasses, sourceClasses} = this.getTestClassesAndSourceClasses();
         return (
-            <TableFilter testClasses={testClasses} sourceClasses={sourceClasses} />
+            <TableFilter testClasses={testClasses} 
+                    sourceClasses={sourceClasses} 
+                    onChangeTestClass={this.props.onChangeTestClass} 
+                    onChangeSourceClass={this.props.onChangeSourceClass} />
         );
     }
 }

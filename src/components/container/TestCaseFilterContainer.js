@@ -13,7 +13,9 @@ class TestCaseFilterContainer extends Component {
     render() {
         console.log("Into TestCaseFilterContainer Render() -> " + JSON.stringify(this.props.testClasses));
         return (
-            <TestCaseFilter testClasses={this.props.testClasses} />
+            <TestCaseFilter testClasses={this.props.testClasses} 
+                onChangeTestClass={this.props.onChangeTestClass} 
+                value={this.props.value}/>
         );
     }
 }

@@ -2,7 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import BootstrapIncludes from './components/ui/BootstrapIncludes';
 import TableContainer from './components/container/TableContainer';
 import TableFilterContainer from './components/container/TableFilterContainer';
+import filterByTestCaseAction from './actions/FilterByTestCaseAction';
+import filterBySourceClassAction from './actions/FilterBySourceClassAction';
+
 import {connect} from 'react-redux';
+import store from './store/index'
 
 class App extends Component {
     static propTypes = {
@@ -11,13 +15,16 @@ class App extends Component {
 
     constructor(props) {
         super(props);
+        const unsubscriber = store.subscribe(() => 
+                console.log("Into App -> Action dispatched - New state => " + JSON.stringify(store.getState()))
+        );
     }
 
     getTestClasses() {
-        let state = this.props.testClasses;
+        let allTestClasses = this.props.testClasses;
         var testClasses = [];
-        for(var testClass in state) {
-            let sourceClassWithMethods = state[testClass];
+        for(var testClass in allTestClasses) {
+            let sourceClassWithMethods = allTestClasses[testClass];
             for(var sourceClass in sourceClassWithMethods) {
                 let testMethods = sourceClassWithMethods[sourceClass];
                 for(var i=0; i<testMethods.length; i++) {
@@ -37,8 +44,10 @@ class App extends Component {
         var testClasses = this.getTestClasses();
         return (
             <div className="App">
-                  <TableFilterContainer testClasses={this.props.testClasses} />
-                  <TableContainer testClasses={testClasses} />
+                  <TableFilterContainer testClasses={this.props.testClasses} 
+                            onChangeTestClass={this.props.onChangeTestClass} 
+                            onChangeSourceClass={this.props.onChangeSourceClass} />
+                  <TableContainer testClasses={testClasses}/>
             </div> 
         );
     }
@@ -48,4 +57,15 @@ const mapStateToProps = state => ({
     testClasses: state.testClasses
 })
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => {
+    return {
+        onChangeTestClass: testClass => {
+            dispatch(filterByTestCaseAction(testClass));
+        },
+        onChangeSourceClass: sourceClass => {
+            dispatch(filterBySourceClassAction(sourceClass));
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

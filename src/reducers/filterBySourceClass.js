@@ -1,6 +1,8 @@
 import T from '../constants/ActionTypes';
 
-function filterBySourceClassName(state, action) {
+const filterBySourceClassName = (state={}, action)  => {
+    console.log("Into Reducer - filterBySourceClassName -> " + JSON.stringify(state.getState()) + " | "
+    + JSON.stringify(action));
     if(action && action.type === T.FILTER_BY_SOURCE_CLASS) {
         var newState = {};
         var sourceClassName = action.payload;
@@ -11,7 +13,6 @@ function filterBySourceClassName(state, action) {
             }
         }
         return newState;
-    } else {
-        return state;
     }
+    return state;
 }

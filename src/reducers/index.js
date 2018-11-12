@@ -3,6 +3,6 @@ import filterBySourceClass from './filterBySourceClass';
 import {combineReducers} from 'redux';
 
 export default combineReducers({
-    testCases: filterByTestByTestName,
+    testClasses: filterByTestByTestName,
     sourceClass: filterBySourceClass
 });

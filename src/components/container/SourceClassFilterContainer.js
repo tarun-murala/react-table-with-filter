@@ -13,7 +13,9 @@ class SourceClassFilterContainer extends Component {
     render() {
         console.log("Into SourceClassFilterContainer Render() -> " + JSON.stringify(this.props.sourceClasses));
         return (
-            <SourceClassFilter sourceClasses={this.props.sourceClasses} />
+            <SourceClassFilter sourceClasses={this.props.sourceClasses} 
+                onChangeSourceClass={this.props.onChangeSourceClass}
+                value={this.props.value} />
         );
     }
 }
