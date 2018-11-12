@@ -43,12 +43,26 @@ class App extends Component {
         console.log("Into App Render() -> " + JSON.stringify(this.props.testClasses));
         var testClasses = this.getTestClasses();
         return (
-            <div className="App">
-                  <TableFilterContainer testClasses={this.props.testClasses} 
-                            onChangeTestClass={this.props.onChangeTestClass} 
-                            onChangeSourceClass={this.props.onChangeSourceClass} />
+            <div className="card">
+                <div className="card-header">
+                    <h4>Per Test Coverage</h4>
+                </div>
+                <div className="card-body">
+                    <div className="card">
+                        <div className="card-header">
+                            <h6>Filters</h6>
+                        </div>
+                        <div className="card-body">
+                            <TableFilterContainer testClasses={this.props.testClasses} 
+                                onChangeTestClass={this.props.onChangeTestClass} 
+                                onChangeSourceClass={this.props.onChangeSourceClass} />
+                        </div>
+                    </div>
+                </div>
+                <div className="card-body">
                   <TableContainer testClasses={testClasses}/>
-            </div> 
+                </div> 
+            </div>
         );
     }
 }
